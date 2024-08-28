@@ -11,11 +11,16 @@ class Peliculas(Frame):
 
     
     def agregarPeliculas(self):
-        titulo = self.titulo_pelicula.get().strip()
+        titulo = self.titulo_pelicula.get().strip().lower()
         #verifica que el campo no este vacio
         if titulo:
+            for pelicula in self.lista_peliculas.get(0,END):
+                if pelicula.lower() == titulo:
+                    messagebox.showwarning("Duplicado","Esta película ya existe.")
+                    return
+                 
             #si titulo no esta vacio, lo agrega al final de la lista
-            self.lista_peliculas.insert(END,titulo)  
+            self.lista_peliculas.insert(END,self.titulo_pelicula.get().strip())  
             #borra el contenido del campo para que este vacio despues de añadir peli
             self.titulo_pelicula.delete(0,END)
         #si el campo de entrada esta vacio muestra un msj    
