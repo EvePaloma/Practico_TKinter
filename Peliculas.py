@@ -9,7 +9,7 @@ class Peliculas(Frame):
         self.grid()
         self.createWidgets()
 
-
+    
     def agregarPeliculas(self):
         titulo = self.titulo_pelicula.get().strip()
         #verifica que el campo no este vacio
@@ -20,7 +20,8 @@ class Peliculas(Frame):
             self.titulo_pelicula.delete(0,END)
         #si el campo de entrada esta vacio muestra un msj    
         else:
-            messagebox.showwarning("Escribe el nombre de una película antes de añadirla.")
+            messagebox.showwarning("Error","Escribe el nombre de una película antes de añadirla.")
+            
 
 
     def createWidgets(self):
@@ -41,6 +42,7 @@ class Peliculas(Frame):
 
         boton = Button(frame, text="Añadir", command=self.agregarPeliculas, bg="plum2", relief = "raised", font=("Times New Roman",12))
         boton.grid(row="2", column="0", padx=5,pady=5)
+
 if __name__ == "__main__":
     ventana = Tk()
     ventana.title("Peliculas")
