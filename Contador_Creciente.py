@@ -6,19 +6,26 @@ ventana.title('ContCreciente')
 ventana.resizable(0,0)
 
 def contadorCreciente():
-    valor = int(contador.get())
-    valor_nuevo = valor + 1
-    contador.delete(0, END)
-    contador.insert(0, int(valor_nuevo))
+    #validamos que la entrada no este vacia
+    entrada = contador.get()
+    if entrada == "":
+        valor = 0
+    else:
+        valor = int(entrada)    
 
-contador = 0
+    valor_nuevo = valor + 1
+    contador.config(state="normal")
+    contador.delete(0, END)
+    contador.insert(0, str(valor_nuevo))
+    contador.config(state="readonly")
+
 
 etiqueta = Label(ventana, text= "Contador", font= ('Times New Roman',12 ))
 etiqueta.grid(row=3, column=1, padx=5, pady=5, sticky='e') 
 
 
-contador = Entry(ventana,  width=12, relief = "raised",font= ('Times New Roman',12 ))
-contador.insert(0,0)
+contador = Entry(ventana,  width=12, relief = "raised",font= ('Times New Roman',12 ),state="readonly")
+contador.insert(0,"0")
 contador.grid(row=3, column=2, padx=5, pady=5, sticky='w') 
 
 
