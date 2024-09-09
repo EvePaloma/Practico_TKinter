@@ -44,10 +44,10 @@ class GeneradorNumeros(Frame):
         label3 = Label(frame, text="Número generado",bg="plum3",font=("Times New Roman", 12))
         label3.grid(row=0, column=0, padx=5, pady=5)  
 
-        self.num_min = Spinbox(frame, from_=0, to=99999,relief = "raised", font=("Times New Roman", 12)) 
+        self.num_min = Spinbox(frame, from_=0, to=99999,relief = "raised", font=("Times New Roman", 12), state="readonly") 
         self.num_min.grid(row=1, column=1, padx=5, pady=5)   
 
-        self.num_max = Spinbox(frame, from_=0, to=99999,relief = "raised", font=("Times New Roman", 12)) 
+        self.num_max = Spinbox(frame, from_=0, to=99999,relief = "raised", font=("Times New Roman", 12), state="readonly") 
         self.num_max.grid(row=2, column=1, padx=5, pady=5)  
 
         self.num_resultado = Entry(frame, textvariable=self.resultado, state="readonly", font=("Times New Roman", 12))
