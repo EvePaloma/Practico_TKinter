@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox 
 
 class Calculadora2(Frame):
     def __init__(self, master, *args, **kwargs):
@@ -8,10 +9,25 @@ class Calculadora2(Frame):
         self.operacion = StringVar()
         self.createWidgets()
 
+    
+    def valNum(self):
+        try:
+            num1 = float(self.num1.get())
+            num2 = float(self.num2.get())
+            return num1, num2
+        except ValueError:
+            messagebox.showerror("Error","Ingrese solo números")
+            self.num1.delete(0,END)
+            self.num2.delete(0,END)
+            return False
+    
 
     def Calcular(self):
-        num1 = float(self.num1.get())
-        num2 = float(self.num2.get())
+        numeros = self.valNum()
+        if not numeros:
+            return
+        
+        num1, num2 = numeros
         operacion = self.operacion.get()
 
         if operacion == "Sumar":
