@@ -18,6 +18,8 @@ class Calculadora(Frame):
             return True
         except ValueError:
             messagebox.showerror("Error","Ingrese solo números")
+            self.num1.delete(0,END)
+            self.num2.delete(0,END)
             return False
 
     def sumar(self):
