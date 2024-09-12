@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import messagebox 
+
 
 class Calculadora(Frame):
     def __init__(self, master, *args, **kwargs):
@@ -7,55 +9,70 @@ class Calculadora(Frame):
         self.grid()
         self.createWidgets()
 
+    def valNum(self):
+        num1 = self.num1.get()
+        num2 = self.num2.get()
+        try:
+            float(num1)
+            float(num2)
+            return True
+        except ValueError:
+            messagebox.showerror("Error","Ingrese solo números")
+            return False
 
     def sumar(self):
-        num1 = float(self.num1.get())
-        num2 = float(self.num2.get())
-        resultado = num1 + num2
-        self.resultado.config(state="normal")
-        self.resultado.delete(0, END)
-        self.resultado.insert(0, str(resultado))
-        self.resultado.config(state="readonly")
+        if self.valNum():
+            num1 = float(self.num1.get())
+            num2 = float(self.num2.get())
+            resultado = num1 + num2
+            self.resultado.config(state="normal")
+            self.resultado.delete(0, END)
+            self.resultado.insert(0, str(resultado))
+            self.resultado.config(state="readonly")
 
 
     def restar(self):
-        num1 = float(self.num1.get())
-        num2 = float(self.num2.get())
-        resultado = num1 - num2
-        self.resultado.config(state="normal")
-        self.resultado.delete(0, END)
-        self.resultado.insert(0, str(resultado))
-        self.resultado.config(state="readonly")
+        if self.valNum():
+            num1 = float(self.num1.get())
+            num2 = float(self.num2.get())
+            resultado = num1 - num2
+            self.resultado.config(state="normal")
+            self.resultado.delete(0, END)
+            self.resultado.insert(0, str(resultado))
+            self.resultado.config(state="readonly")
 
 
     def multiplicar(self):
-        num1 = float(self.num1.get())
-        num2 = float(self.num2.get())
-        resultado = num1 * num2
-        self.resultado.config(state="normal")
-        self.resultado.delete(0, END)
-        self.resultado.insert(0, str(resultado))
-        self.resultado.config(state="readonly")        
+        if self.valNum():
+            num1 = float(self.num1.get())
+            num2 = float(self.num2.get())
+            resultado = num1 * num2
+            self.resultado.config(state="normal")
+            self.resultado.delete(0, END)
+            self.resultado.insert(0, str(resultado))
+            self.resultado.config(state="readonly")        
 
 
     def dividir(self):
-        num1 = float(self.num1.get())
-        num2 = float(self.num2.get())
-        resultado = num1 / num2 if num2 != 0 else "Error" 
-        self.resultado.config(state="normal")
-        self.resultado.delete(0, END)
-        self.resultado.insert(0, str(resultado))
-        self.resultado.config(state="readonly")
+        if self.valNum():
+            num1 = float(self.num1.get())
+            num2 = float(self.num2.get())
+            resultado = num1 / num2 if num2 != 0 else "Error" 
+            self.resultado.config(state="normal")
+            self.resultado.delete(0, END)
+            self.resultado.insert(0, str(resultado))
+            self.resultado.config(state="readonly")
 
 
     def porcentaje(self):
-        num1 = float(self.num1.get())
-        num2 = float(self.num2.get())
-        resultado = num1 % num2
-        self.resultado.config(state="normal")
-        self.resultado.delete(0, END)
-        self.resultado.insert(0, str(resultado))
-        self.resultado.config(state="readonly")
+        if self.valNum():
+            num1 = float(self.num1.get())
+            num2 = float(self.num2.get())
+            resultado = num1 % num2
+            self.resultado.config(state="normal")
+            self.resultado.delete(0, END)
+            self.resultado.insert(0, str(resultado))
+            self.resultado.config(state="readonly")
 
 
     def borrar(self):
